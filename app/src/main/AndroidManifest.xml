@@ -3,6 +3,7 @@
     package="com.eye.baidumapdemos.app" >
 
     <application
+        android:name="com.eye.baidumapdemos.app.MainApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -17,12 +18,30 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="Ar5aqjqMniYGFw6kIhebulhS">
+        <!-- YH Windows -->
+        <!-- <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="Ar5aqjqMniYGFw6kIhebulhS"> -->
+        <!-- </meta-data> -->
+
+
+        <!-- EYE HOME -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="q89LjoFHiOwgL3eEGMIzqcLD" >
         </meta-data>
 
+        <activity
+            android:name="com.eye.baidumapdemos.app.RouteViewActivity"
+            android:label="@string/title_activity_route_view"
+            android:parentActivityName="com.eye.baidumapdemos.app.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name="com.eye.baidumapdemos.app.RoutePlannerActivity"
+            android:label="@string/title_activity_route_planner" >
+        </activity>
     </application>
-
-
 
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
@@ -40,8 +59,8 @@
     </uses-permission>
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
-    <!--<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" >-->
-    <!--</uses-permission>-->
+    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" > -->
+    <!-- </uses-permission> -->
     <!-- <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission> -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
     </uses-permission>

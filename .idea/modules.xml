@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BaiduMapDemos.iml" filepath="$PROJECT_DIR$/BaiduMapDemos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GeoDaoGenerator/GeoDaoGenerator.iml" filepath="$PROJECT_DIR$/GeoDaoGenerator/GeoDaoGenerator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
