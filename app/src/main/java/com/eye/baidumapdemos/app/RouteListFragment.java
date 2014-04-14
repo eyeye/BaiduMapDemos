@@ -2,9 +2,6 @@ package com.eye.baidumapdemos.app;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -34,8 +31,8 @@ import com.eye.baidumapdemos.dao.RouteDao;
  */
 public class RouteListFragment
         extends Fragment
-        implements AbsListView.OnItemClickListener,
-        LoaderManager.LoaderCallbacks<Cursor>
+        implements AbsListView.OnItemClickListener//,
+//        LoaderManager.LoaderCallbacks<Cursor>
 {
 
     private final static String TAG = RouteListFragment.class.getSimpleName();
@@ -121,26 +118,26 @@ public class RouteListFragment
 //        Route route = new Route(null, new Date(), new Date());
 //        routeDao.insert(route);
 
-        String orderBy = RouteDao.Properties.StartTime.columnName + " COLLATE LOCALIZED ASC";
-        cursor = db.query(routeDao.getTablename(),
-                          routeDao.getAllColumns(),
-                          null, null, null, null,
-                          orderBy);
+//        String orderBy = RouteDao.Properties.StartTime.columnName + " COLLATE LOCALIZED ASC";
+//        cursor = db.query(routeDao.getTablename(),
+//                          routeDao.getAllColumns(),
+//                          null, null, null, null,
+//                          orderBy);
+//
+//        String[] from = {RouteDao.Properties.StartTime.columnName, RouteDao.Properties.EndTime.columnName};
+//        int[] to = { android.R.id.text1, android.R.id.text2 };
+//        adapter = new SimpleCursorAdapter(this.getActivity(), android.R.layout.simple_list_item_2, cursor,
+//                                                              from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER );
 
-        String[] from = {RouteDao.Properties.StartTime.columnName, RouteDao.Properties.EndTime.columnName};
-        int[] to = { android.R.id.text1, android.R.id.text2 };
-        adapter = new SimpleCursorAdapter(this.getActivity(), android.R.layout.simple_list_item_2, cursor,
-                                                              from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER );
-
-        try {
-            Log.i(TAG, "initLoader begin");
-            getLoaderManager().initLoader(0, null, this);
-            Log.i(TAG, "initLoader finish");
-        }
-        catch (NullPointerException e)
-        {
-            Log.i(TAG, "initLoader error: " + e);
-        }
+//        try {
+//            Log.i(TAG, "initLoader begin");
+//            getLoaderManager().initLoader(0, null, this);
+//            Log.i(TAG, "initLoader finish");
+//        }
+//        catch (NullPointerException e)
+//        {
+//            Log.i(TAG, "initLoader error: " + e);
+//        }
 
     }
 
@@ -152,12 +149,12 @@ public class RouteListFragment
 
         View view = inflater.inflate(R.layout.fragment_routelist, container, false);
 
-        // Set the adapter
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(adapter);
-
-        // Set OnItemClickListener so we can be notified on item clicks
-        mListView.setOnItemClickListener(this);
+//        // Set the adapter
+//        mListView = (AbsListView) view.findViewById(android.R.id.list);
+//        ((AdapterView<ListAdapter>) mListView).setAdapter(adapter);
+//
+//        // Set OnItemClickListener so we can be notified on item clicks
+//        mListView.setOnItemClickListener(this);
 
         return view;
     }
@@ -181,9 +178,30 @@ public class RouteListFragment
     }
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         Log.i(TAG, "onStart");
+
+
+        String orderBy = RouteDao.Properties.StartTime.columnName + " COLLATE LOCALIZED ASC";
+        cursor = db.query(routeDao.getTablename(),
+                                 routeDao.getAllColumns(),
+                                 null, null, null, null,
+                                 orderBy);
+
+        String[] from = {RouteDao.Properties.StartTime.columnName, RouteDao.Properties.EndTime.columnName};
+        int[] to = { android.R.id.text1, android.R.id.text2 };
+        adapter = new SimpleCursorAdapter(this.getActivity(), android.R.layout.simple_list_item_2, cursor,
+                                                 from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER );
+
+
+        // Set the adapter
+        mListView = (AbsListView) getActivity().findViewById(android.R.id.list);
+        ((AdapterView<ListAdapter>) mListView).setAdapter(adapter);
+
+        // Set OnItemClickListener so we can be notified on item clicks
+        mListView.setOnItemClickListener(this);
 
 //        try
 //        {
@@ -266,26 +284,26 @@ public class RouteListFragment
         // TODO: Update argument type and name
         public void onFragmentInteraction(long id);
     }
-
-
-
-    @Override
-    public Loader onCreateLoader(int i, Bundle bundle) {
-        Log.i(TAG, "onCreateLoader");
-        String orderBy = RouteDao.Properties.StartTime.columnName + " COLLATE LOCALIZED ASC";
-        return new CursorLoader(getActivity(), null, null, null, null, orderBy);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        Log.i(TAG, "onLoadFinished");
-        adapter.swapCursor(cursor);
-    }
-
-
-    @Override
-    public void onLoaderReset(Loader loader) {
-        Log.i(TAG, "onLoaderReset");
-        adapter.swapCursor(null);
-    }
+//
+//
+//
+//    @Override
+//    public Loader onCreateLoader(int i, Bundle bundle) {
+//        Log.i(TAG, "onCreateLoader");
+//        String orderBy = RouteDao.Properties.StartTime.columnName + " COLLATE LOCALIZED ASC";
+//        return new CursorLoader(getActivity(), null, null, null, null, orderBy);
+//    }
+//
+//    @Override
+//    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+//        Log.i(TAG, "onLoadFinished");
+//        adapter.swapCursor(cursor);
+//    }
+//
+//
+//    @Override
+//    public void onLoaderReset(Loader loader) {
+//        Log.i(TAG, "onLoaderReset");
+//        adapter.swapCursor(null);
+//    }
 }

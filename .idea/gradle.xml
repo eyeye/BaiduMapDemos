@@ -7,9 +7,9 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/GeoDaoGenerator" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="E:\workspace_android\BaiduMapDemos" />
+            <option value="E:\workspace_android\BaiduMapDemos\GeoDaoGenerator" />
+            <option value="E:\workspace_android\BaiduMapDemos\app" />
           </set>
         </option>
       </GradleProjectSettings>
